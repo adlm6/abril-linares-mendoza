@@ -15,6 +15,16 @@ export type Photo = {
   tags: readonly Tag[];
   width: number;
   height: number;
+  /**
+   * Portraits of an individual person are never eligible for the hero.
+   * Set this false for those photos. The about headshot is not in `photos`.
+   */
+  hero: boolean;
+  /**
+   * CSS object-position when this photo is the hero, so the subject can sit
+   * beside the name card. The bear's value keeps the cub on the right.
+   */
+  heroPosition: string;
 };
 
 export const photos: readonly Photo[] = [
@@ -25,6 +35,8 @@ export const photos: readonly Photo[] = [
     tags: ["Places", "Architecture"],
     width: 2000,
     height: 1333,
+    hero: true,
+    heroPosition: "center",
   },
   {
     src: "/photos/calligraphy-shop.jpg",
@@ -33,6 +45,8 @@ export const photos: readonly Photo[] = [
     tags: ["Street", "Places"],
     width: 1333,
     height: 2000,
+    hero: true,
+    heroPosition: "center",
   },
   {
     src: "/photos/painted-gate.jpg",
@@ -41,6 +55,8 @@ export const photos: readonly Photo[] = [
     tags: ["Architecture", "Places"],
     width: 1333,
     height: 2000,
+    hero: true,
+    heroPosition: "center",
   },
   {
     src: "/photos/red-lanterns.jpg",
@@ -49,6 +65,8 @@ export const photos: readonly Photo[] = [
     tags: ["Places", "Street"],
     width: 2000,
     height: 1333,
+    hero: true,
+    heroPosition: "center",
   },
   {
     src: "/photos/grey-cat.jpg",
@@ -57,6 +75,8 @@ export const photos: readonly Photo[] = [
     tags: ["Wildlife"],
     width: 2000,
     height: 1333,
+    hero: true,
+    heroPosition: "center",
   },
   {
     src: "/photos/canal-boat.jpg",
@@ -65,6 +85,8 @@ export const photos: readonly Photo[] = [
     tags: ["Places", "Street"],
     width: 2000,
     height: 1465,
+    hero: true,
+    heroPosition: "center",
   },
   {
     src: "/photos/clock-tower.jpg",
@@ -73,6 +95,8 @@ export const photos: readonly Photo[] = [
     tags: ["Architecture"],
     width: 1333,
     height: 2000,
+    hero: true,
+    heroPosition: "center",
   },
   {
     src: "/photos/black-bear.jpg",
@@ -81,6 +105,8 @@ export const photos: readonly Photo[] = [
     tags: ["Wildlife"],
     width: 2000,
     height: 1333,
+    hero: true,
+    heroPosition: "32% center",
   },
   {
     src: "/photos/thermal-terraces.jpg",
@@ -89,6 +115,8 @@ export const photos: readonly Photo[] = [
     tags: ["Places"],
     width: 2000,
     height: 1333,
+    hero: true,
+    heroPosition: "center",
   },
   {
     src: "/photos/courtyard-fountain.jpg",
@@ -97,6 +125,8 @@ export const photos: readonly Photo[] = [
     tags: ["Architecture", "Places"],
     width: 2000,
     height: 1333,
+    hero: true,
+    heroPosition: "center",
   },
   {
     src: "/photos/rain-umbrellas.jpg",
@@ -105,6 +135,8 @@ export const photos: readonly Photo[] = [
     tags: ["Places", "People"],
     width: 1333,
     height: 2000,
+    hero: true,
+    heroPosition: "center",
   },
   {
     src: "/photos/graduation.jpg",
@@ -113,20 +145,15 @@ export const photos: readonly Photo[] = [
     tags: ["People"],
     width: 1333,
     height: 2000,
+    hero: false,
+    heroPosition: "center",
   },
 ];
 
+// The about portrait is separate from the gallery. It is never eligible for the hero.
 export const headshot = {
   src: "/about/headshot.jpg",
   alt: "Abril Linares Mendoza, smiling, arms crossed, in a white shirt outdoors.",
-  width: 1740,
-  height: 2000,
+  width: 1922,
+  height: 2209,
 } as const;
-
-export function findPhoto(src: string): Photo {
-  const photo = photos.find((item) => item.src === src);
-  if (!photo) {
-    throw new Error(`Missing photograph ${src}`);
-  }
-  return photo;
-}

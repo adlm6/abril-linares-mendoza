@@ -7,6 +7,14 @@ import type { MouseEvent } from "react";
 import { Logo } from "@/components/Logo";
 import { navigation, site } from "@/data/content";
 
+function linkPath(href: string) {
+  const path = href.split("#")[0] || "/";
+  if (path.length > 1 && path.endsWith("/")) {
+    return path.slice(0, -1);
+  }
+  return path;
+}
+
 function currentPath(pathname: string) {
   if (pathname.length > 1 && pathname.endsWith("/")) {
     return pathname.slice(0, -1);
@@ -87,7 +95,7 @@ export function Nav() {
           </Link>
           <ul className="hidden items-center md:flex">
             {navigation.map((item) => {
-              const active = item.href === "/photos" && path === "/photos";
+              const active = linkPath(item.href) !== "/" && linkPath(item.href) === path;
               return (
                 <li key={item.href}>
                   <Link
@@ -119,7 +127,7 @@ export function Nav() {
         <div id="site-menu" hidden={!open} className="glass mt-2 p-2 md:hidden">
           <ul className="flex flex-col">
             {navigation.map((item) => {
-              const active = item.href === "/photos" && path === "/photos";
+              const active = linkPath(item.href) !== "/" && linkPath(item.href) === path;
               return (
                 <li key={item.href}>
                   <Link

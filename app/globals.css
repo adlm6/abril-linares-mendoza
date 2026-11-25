@@ -186,6 +186,16 @@ button {
   transform: none;
 }
 
+.photo-caption {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.photo-card:hover .photo-caption,
+.photo-card:focus-visible .photo-caption {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

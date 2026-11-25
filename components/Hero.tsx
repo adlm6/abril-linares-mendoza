@@ -3,24 +3,73 @@
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { hero } from "@/data/content";
 import { photos, type Photo } from "@/data/photos";
 
 const easeOut: [number, number, number, number] = [0, 0, 0.2, 1];
 
+const heroPhotos = photos.filter((photo) => photo.hero);
+
+/**
+ * Cover the viewport, but do not enlarge a photo past its own pixels.
+ * A larger screen contains the frame instead of scaling it soft.
+ */
+function heroFit(
+  boxWidth: number,
+  boxHeight: number,
+  imageWidth: number,
+  imageHeight: number,
+): "cover" | "contain" {
+  if (boxWidth <= 0 || boxHeight <= 0) {
+    return "cover";
+  }
+
+  const scale = Math.max(boxWidth / imageWidth, boxHeight / imageHeight);
+  return scale > 1 ? "contain" : "cover";
+}
+
 export function Hero() {
   const reduce = useReducedMotion();
+  const frameRef = useRef<HTMLElement>(null);
   const [photo, setPhoto] = useState<Photo | null>(null);
+  const [fit, setFit] = useState<"cover" | "contain">("contain");
 
   useEffect(() => {
-    const index = Math.floor(Math.random() * photos.length);
-    setPhoto(photos[index] ?? null);
+    if (heroPhotos.length === 0) {
+      return;
+    }
+    const index = Math.floor(Math.random() * heroPhotos.length);
+    setPhoto(heroPhotos[index] ?? null);
   }, []);
 
+  useEffect(() => {
+    if (!photo) {
+      return;
+    }
+
+    const node = frameRef.current;
+    if (!node) {
+      return;
+    }
+
+    const measure = () => {
+      const rect = node.getBoundingClientRect();
+      setFit(heroFit(rect.width, rect.height, photo.width, photo.height));
+    };
+
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [photo]);
+
   return (
-    <section className="relative isolate min-h-[100svh] overflow-hidden bg-paper">
+    <section
+      ref={frameRef}
+      className="relative isolate min-h-[100svh] overflow-hidden bg-paper"
+    >
       {photo ? (
         <motion.div
           className="absolute inset-0"
@@ -33,8 +82,10 @@ export function Hero() {
             alt={photo.alt}
             fill
             priority
-            sizes="100vw"
-            className="object-cover"
+            quality={90}
+            sizes={`${photo.width}px`}
+            className={fit === "cover" ? "object-cover" : "object-contain"}
+            style={{ objectPosition: photo.heroPosition }}
           />
         </motion.div>
       ) : null}
@@ -51,9 +102,9 @@ export function Hero() {
           <p className="mt-5 text-[1.2rem] leading-snug">{hero.line}</p>
           <p className="mt-4 text-[17px] leading-[1.5]">{hero.support}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a className="btn btn-ink" href="#work">
+            <Link className="btn btn-ink" href="/work">
               {hero.workLabel}
-            </a>
+            </Link>
             <Link className="btn btn-line" href="/photos">
               {hero.photosLabel}
             </Link>

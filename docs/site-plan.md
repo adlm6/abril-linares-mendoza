@@ -8,14 +8,14 @@ Coding rules for the build live in [cursorrules.md](/cursor/stores/bc-146e5fc6-7
 
 ## Sections
 
-Single scrolling page, plus one dedicated Photographs view. Sticky glass nav: the A mark, then Work, Experience, About, Photos, Contact.
+Home page with a first look at each section, plus its own page for Work, Experience, About, and Photographs. Sticky glass nav: the A mark, then Work, Experience, About, Photos, Contact. Those links go to `/work`, `/experience`, `/about`, and `/photos`. Contact stays only on the home page, and the nav link is `/#contact`.
 
-1. **Hero.** Full-viewport photograph, chosen at random on each visit from the gallery set (never the headshot). Glass panel with name, one line, and two actions.
-2. **Selected work.** Large rounded cards, image-forward, in the spirit of the motionsites.ai reference. Each card has a repo or demo link when one exists.
-3. **Experience.** Resume highlights, newest first, with one link to the full resume on Google Docs.
-4. **About.** Short bio, headshot, languages, honors, and a quiet skills line. Not a logo wall.
-5. **Photographs.** Its own section and its own route (`/photos`) so filters have a URL. Chips filter the grid. The same photos can sit behind other sections.
-6. **Contact.** Email, LinkedIn, GitHub. Phone stays off the public page unless Abril asks for it.
+1. **Hero.** Full-viewport photograph, chosen at random on each visit from gallery photos with `hero: true`. Portraits of an individual person set `hero: false` and never appear here. The headshot is not in that set. `heroPosition` is the CSS object-position for that photo, so a subject such as the bear can sit to the right of the name card. Do not scale the photo up past its pixels. Glass panel with name, one line, and two actions.
+2. **Selected work.** Large rounded cards. A project image is an optional file under `public/projects/`. When it is missing, the card is a type-only glass placeholder, not a gallery photograph. Each card has a repo or demo link when one exists. Home shows the first project and a link to `/work`.
+3. **Experience.** Home shows the first two roles and a link to `/experience`. That page is a vertical timeline: line, dot, date, role, organization in the accent color, and one short line. A polaroid stack of `experiencePhotos` sits beside it when she adds prints. The page ends with "See full resume".
+4. **About.** Short bio, headshot, languages, honors, and a quiet skills line. Not a logo wall. Home shows the opening paragraph. The full page is `/about`. The headshot is served at its original pixel size.
+5. **Photographs.** Home shows a few photos, a different handful each visit, then a button to `/photos`. Chips on that page are real buttons and filter the grid. Captions appear only on hover, at the bottom of the image, over a light vignette. The same photos can sit behind other sections.
+6. **Contact.** Email, LinkedIn, GitHub, on the home page only. Phone stays off the public page unless Abril asks for it.
 
 ## Copy
 
@@ -27,9 +27,9 @@ Eyebrow: Yale University · Computer Science and Economics · 2028
 
 Name: Abril Linares Mendoza
 
-Line: I build tools that take the drag out of real operations.
+Line: Engineer, economist, game designer, photographer, and musician at Yale.
 
-Support: Enterprise systems at the Pittsburgh Pirates. A repair desk for 10,000 Yale students. Genomics at UPMC Hillman.
+Support: A third-year Yale student with 2+ years of internship experience. I'm passionate about combining art and computer science, and I love exploring the economics of it all!
 
 Actions: Selected work, Photographs
 
@@ -84,8 +84,8 @@ Direct a 15-person executive team for 200+ members. Weekly notes to 700+ subscri
 May 2023 to November 2023, University of Pittsburgh
 Ran differential gene expression and survival analysis in R across patient cohorts. Presented the methods at the American Medical Informatics Association Symposium.
 
-Link label: Full resume
-Link: Google Doc URL still needed
+Link label: See full resume
+Link: https://docs.google.com/document/d/1SaVoVLnwcXPz8JxkL-TFHjnjLdj4OVpWxQ1KWDNqY30/edit?usp=sharing
 
 ### About
 
@@ -154,7 +154,7 @@ Color stays neutral so the photos supply the color.
 - Muted ink: #5c564e
 - Glass: rgba(255, 255, 255, 0.55)
 - Hairline: rgba(255, 255, 255, 0.7)
-- Accent, used rarely: #9c2f24, taken from the lanterns. Active filter, the A mark on paper, and text links. Nowhere else.
+- Accent, used rarely: #9c2f24, taken from the lanterns. Active filter, the A mark on paper, text links, and the organization name on the experience timeline. Nowhere else.
 
 Typography:
 - Display: Fraunces, optical size on, soft contrast. Names, headlines, and photo titles only.
@@ -166,7 +166,7 @@ Layout:
 - Hero is 100svh. Photo is full bleed, slightly darkened at the bottom. Glass card sits lower left on desktop and lower center on a phone, max 520px wide. No centered column of three feature cards. No illustration. No gradient orb.
 - Nav is a floating glass pill, 16px from the top. Left: the A. Right: five links. On small screens the links collapse to a glass sheet, not a hamburger icon from a kit.
 - Work cards are at least 420px tall on desktop, two up, full width of the image area, 28px radius, caption row underneath in small Outfit with a kicker and a text link. On a phone they stack.
-- Experience is a single column of rows, hairline dividers, date on the right on desktop and under the role on a phone. No timeline dots, no company logos.
+- Experience on its own page is a timeline: a vertical accent line, a dot, the date, the role, the organization in accent, and one short line. Home shows the first two roles and a button to that page. No company logos. Optional polaroid prints overlap beside the timeline.
 - About is a two-column band: headshot in a 28px rounded frame, copy on the glass. One column on a phone, photo first.
 - Photo grid is masonry-like with mixed aspect ratios, 16px gaps, 20px radius. Filter chips are pills. The active chip is ink on paper. Empty filter state says which tag has no photos yet.
 - Contact is one short glass band, then a quiet footer with the A and the year.
@@ -180,7 +180,7 @@ Motion, with Framer Motion:
 - Filter changes crossfade the grid. No bounce, no spring overshoot, no parallax on scroll.
 - Honor prefers-reduced-motion by cutting transforms and keeping opacity instant.
 
-Random photo: on each full page load, pick one gallery photo at random for the hero. Do not pick the headshot. Persist nothing, so a refresh can change it. Other sections may use a fixed photo as a band (lanterns behind contact, clock tower behind about) so the page does not reshuffle itself below the fold.
+Random photo: on each full page load, pick one gallery photo with `hero: true` for the hero. Do not pick the headshot or a portrait flagged `hero: false`. Use that photo's `heroPosition`. Do not enlarge it past its pixel size. Persist nothing, so a refresh can change it. The home photographs block also picks a few gallery photos at random each visit. Other sections may use a fixed photo as a band (lanterns behind contact, clock tower behind about) so the page does not reshuffle itself below the fold.
 
 Forbidden, because they make the page look like a template:
 - Purple or blue gradients
@@ -204,5 +204,5 @@ If the Vercel project is not connected yet, Abril imports that repository at [ve
 - Host on Vercel. No static export and no GitHub Pages.
 - No phone number on the site.
 - Selected work includes the payroll demo, with its repo and live demo.
-- Resume Doc URL and public links for Mariachi Juvenil and meetHaven are still missing. Hide those buttons until a URL exists.
+- The resume link is the Google Doc on the experience page. Public links for Mariachi Juvenil and meetHaven are still missing. Hide those buttons until a URL exists.
 - Place names and tag renames can wait.

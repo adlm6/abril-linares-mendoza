@@ -15,9 +15,9 @@ export const hero = {
 } as const;
 
 export const navigation = [
-  { href: "/#work", label: "Work" },
-  { href: "/#experience", label: "Experience" },
-  { href: "/#about", label: "About" },
+  { href: "/work", label: "Work" },
+  { href: "/experience", label: "Experience" },
+  { href: "/about", label: "About" },
   { href: "/photos", label: "Photos" },
   { href: "/#contact", label: "Contact" },
 ] as const;
@@ -32,8 +32,10 @@ export type Project = {
   kicker: string;
   stack: string;
   body: string;
-  image: string;
-  objectPosition: string;
+  /** Optional file under public/projects/. Omit it to show a type-only placeholder. */
+  image?: string;
+  /** CSS object-position for `image`, when one is set. */
+  imagePosition?: string;
   links: readonly ProjectLink[];
 };
 
@@ -41,14 +43,13 @@ export const work = {
   label: "Selected work",
   title:
     "Two products about access, and the kind of internal tool I built for a baseball club.",
+  moreLabel: "See more work",
   projects: [
     {
       title: "Mariachi Juvenil",
       kicker: "Anthropic Claude Builder Hackathon, winner",
       stack: "JavaScript, React, Gemini API, Claude Code",
       body: "Youth music programs are hard to find and harder to afford. This React platform connects students with lower-cost instruction, built with Gemini and Claude.",
-      image: "/photos/graduation.jpg",
-      objectPosition: "center 62%",
       links: [],
     },
     {
@@ -56,8 +57,6 @@ export const work = {
       kicker: "Campus discovery",
       stack: "React, Node.js, Figma",
       body: "A campus app for finding events and student organizations. Prototyped in Figma against Nielsen's heuristics, then built so the right room is not a scavenger hunt.",
-      image: "/photos/courtyard-fountain.jpg",
-      objectPosition: "center 55%",
       links: [],
     },
     {
@@ -65,8 +64,6 @@ export const work = {
       kicker: "Pittsburgh Pirates",
       stack: "TypeScript",
       body: "A public demo of the internal tooling from the enterprise systems internship.",
-      image: "/photos/thermal-terraces.jpg",
-      objectPosition: "center",
       links: [
         {
           label: "Repository",
@@ -91,6 +88,7 @@ export type Role = {
 export const experience = {
   label: "Experience",
   title: "Find the bottleneck, measure it, ship the tool.",
+  moreLabel: "See all experience",
   roles: [
     {
       org: "Pittsburgh Pirates",
@@ -125,14 +123,27 @@ export const experience = {
   ] satisfies readonly Role[],
 } as const;
 
-export const resume: { label: string; href: string | null } = {
-  label: "Full resume",
-  href: null,
+export type ExperiencePhoto = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
 };
+
+// Prints for the polaroid stack beside the experience timeline.
+// Add a file under public/experience/ and a row here.
+// { src: "/experience/example.jpg", alt: "Short description of the photo.", width: 1600, height: 1600 },
+export const experiencePhotos: readonly ExperiencePhoto[] = [];
+
+export const resume = {
+  label: "See full resume",
+  href: "https://docs.google.com/document/d/1SaVoVLnwcXPz8JxkL-TFHjnjLdj4OVpWxQ1KWDNqY30/edit?usp=sharing",
+} as const;
 
 export const about = {
   label: "About",
   headline: "Two majors, three languages, and a habit of making the thing.",
+  moreLabel: "More about me",
   paragraphs: [
     "I'm Abril, a Yale student in computer science and economics, graduating in 2028. The coursework runs from systems and human-computer interaction to econometrics, plus product management in the age of AI. I studied intensive Mandarin and business at Donghua University in Shanghai.",
     "I speak Spanish and English fluently, and Mandarin at an intermediate level. I'm a Yale Ogilvie Technology Scholar and a National Aspirations in Computing awardee.",
@@ -146,8 +157,9 @@ export const about = {
 export const photographs = {
   label: "Photographs",
   title: "A room for the pictures.",
-  body: "Filter by what you came to see. The photo behind the opening changes each time you visit.",
-  filterLabel: "Filter the photographs",
+  body: "Filter by what you came to see.",
+  homeBody: "A few from the set, chosen again each visit.",
+  moreLabel: "See all photographs",
 } as const;
 
 export const contact = {
