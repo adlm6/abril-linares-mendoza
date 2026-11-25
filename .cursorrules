@@ -1,0 +1,47 @@
+These rules apply to every change in this repository. The design source of truth is `docs/site-plan.md` in the project library, and the copy in that file. Do not restyle the site into a generic template.
+
+## Stack
+
+- Next.js App Router. Do not set `output: 'export'`
+- TypeScript, `strict`
+- Tailwind CSS
+- Framer Motion for the fades named in the site plan, and nothing else
+- No component library, no CSS-in-JS, no extra animation package
+- `next/image` with the default optimizer. Do not set `unoptimized: true`
+- Google fonts through `next/font`: Fraunces for display, Outfit for UI and body
+
+## Structure
+
+- Routes: `/` for the page, `/photos` for the filterable gallery
+- Content lives in typed modules under `data/`, not in JSX
+- Photographs are objects in `data/photos.ts` with `src`, `title`, `alt`, and `tags`. Adding a photo is one new object plus a file in `public/photos/`
+- Experience, projects, and contact live in `data/content.ts`
+- One component per file under `components/`
+- The A logo is an inline SVG component, not an image
+
+## Design constraints
+
+- Paper `#f4f1ec`, ink `#1c1917`, muted `#5c564e`, accent `#9c2f24` only for the mark on paper, text links, and the active filter
+- Glass: white at 55% opacity, 20px backdrop blur, 1px white edge, soft shadow
+- Card radius 28px, photo radius 20px, filter chips fully rounded
+- Content max width 1120px. Hero and photo bands bleed
+- No Inter, Roboto, Arial, Space Grotesk, purple gradients, icon-feature grids, skill logo walls, dark-mode toggle, or stock patterns
+- Body text never sits on a photograph without glass or a scrim
+- Hero photo is chosen at random from gallery photos on each load, never the headshot
+
+## Code
+
+- Accessible: real buttons for filters, visible focus, alt text on every photo, contrast that holds on glass
+- Honor `prefers-reduced-motion`
+- No phone number in source unless it is explicitly added to `data/content.ts`
+- No backend, no contact form, no analytics snippet unless asked
+- Do not invent projects, metrics, or employers
+- Keep components server-rendered where they can be. The random hero and the photo filter are the client pieces
+- Match existing names and patterns when you edit. Do not refactor unrelated files
+
+## Hosting
+
+- Vercel’s free tier. No `basePath` and no `assetPrefix`
+- The build command is `next build`
+- Do not deploy to GitHub Pages
+- Do not add a server action, a route handler, or any API unless asked
