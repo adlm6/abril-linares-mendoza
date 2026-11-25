@@ -7,9 +7,9 @@ export const site = {
 export const hero = {
   eyebrow: "Yale University · Computer Science and Economics · 2028",
   name: "Abril Linares Mendoza",
-  line: "I build tools that take the drag out of real operations.",
+  line: "Engineer, economist, game designer, photographer, and musician at Yale.",
   support:
-    "Enterprise systems at the Pittsburgh Pirates. A repair desk for 10,000 Yale students. Genomics at UPMC Hillman.",
+    "A third-year Yale student with 2+ years of internship experience. I'm passionate about combining art and computer science, and I love exploring the economics of it all!",
   workLabel: "Selected work",
   photosLabel: "Photographs",
 } as const;
