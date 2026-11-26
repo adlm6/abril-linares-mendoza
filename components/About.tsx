@@ -17,7 +17,7 @@ export function About({ variant = "home" }: AboutProps) {
   return (
     <PhotoBand src={about.backdrop} inset={variant === "page" ? "page" : "section"}>
       <div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] md:gap-16">
-        <div className="overflow-hidden rounded-[28px] bg-[#e6e1d9]">
+        <div className="photo-float overflow-hidden rounded-[28px] bg-[#e6e1d9]">
           <Image
             src={headshot.src}
             alt={headshot.alt}

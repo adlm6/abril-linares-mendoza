@@ -196,9 +196,59 @@ button {
   opacity: 1;
 }
 
+@keyframes photo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.photo-float {
+  animation: photo-float 8s ease-in-out infinite;
+}
+
+@keyframes photo-float-fill {
+  0%,
+  100% {
+    transform: scale(1.06) translateY(0);
+  }
+  50% {
+    transform: scale(1.06) translateY(-10px);
+  }
+}
+
+.photo-float-fill {
+  animation: photo-float-fill 9s ease-in-out infinite;
+}
+
+.photo-zoom {
+  transition: transform 700ms ease;
+}
+
+.photo-card:hover .photo-zoom,
+.photo-card:focus-visible .photo-zoom {
+  transform: scale(1.08);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .photo-float,
+  .photo-float-fill,
+  .photo-caption,
+  .photo-zoom {
+    animation: none;
+    transition: none;
+  }
+
+  .photo-card:hover .photo-zoom,
+  .photo-card:focus-visible .photo-zoom {
+    transform: none;
   }
 }
 

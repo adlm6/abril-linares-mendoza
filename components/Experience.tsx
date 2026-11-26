@@ -33,7 +33,7 @@ export function Experience({ variant = "home" }: ExperienceProps) {
   const shell =
     variant === "page"
       ? "bg-paper px-4 pb-[72px] pt-32 md:px-6 md:pb-[120px] md:pt-36"
-      : "bg-paper px-4 py-[72px] md:px-6 md:py-[120px]";
+      : "bg-paper px-4 pb-8 pt-[72px] md:px-6 md:pb-10 md:pt-[120px]";
   const showPrints = variant === "page" && experiencePhotos.length > 0;
 
   return (
@@ -47,7 +47,7 @@ export function Experience({ variant = "home" }: ExperienceProps) {
         <div
           className={
             showPrints
-              ? "mt-10 grid items-start gap-16 md:mt-[72px] md:grid-cols-[minmax(0,1fr)_240px] md:gap-12"
+              ? "mt-10 grid items-start gap-16 md:mt-[72px] md:grid-cols-[minmax(0,1fr)_320px] md:gap-10"
               : "mt-10 md:mt-[72px]"
           }
         >

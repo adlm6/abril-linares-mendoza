@@ -4,7 +4,7 @@ import { music } from "@/data/content";
 
 export const metadata: Metadata = {
   title: music.label,
-  description: music.empty,
+  description: `${music.channelLead} ${music.channelName}.`,
   alternates: {
     canonical: "/music",
   },

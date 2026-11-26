@@ -84,7 +84,9 @@ export function Hero() {
             priority
             quality={90}
             sizes={`${photo.width}px`}
-            className={fit === "cover" ? "object-cover" : "object-contain"}
+            className={
+              fit === "cover" ? "object-cover photo-float-fill" : "object-contain photo-float-fill"
+            }
             style={{ objectPosition: photo.heroPosition }}
           />
         </motion.div>

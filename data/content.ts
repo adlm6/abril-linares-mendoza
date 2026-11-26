@@ -202,7 +202,10 @@ export const about = {
 export const photographs = {
   label: "Photographs",
   title: "It all started with a gifted camera...",
-  body: "Digital shots from campus and travel. Graduating from Yale, Harvard, JHU, Pitt, or CMU this Spring? Contact me for 2027. If you're a Yale club seeking a photo shoot, use the Yale filter to see past club photos and reach out if you're interested! See more photos on Instagram @abrilita_photos",
+  body: "Digital shots from campus and travel. Graduating from Yale, Harvard, JHU, Pitt, or CMU this Spring? Contact me for 2027. If you're a Yale club seeking a photo shoot, use the Yale filter to see past club photos and reach out if you're interested!",
+  instagramLead: "See more photos on Instagram",
+  instagramHandle: "@abrilita_photos",
+  instagramHref: "https://www.instagram.com/abrilita_photos/",
   homeBody: "A photo I've taken recently, chosen again each visit.",
   moreLabel: "See all photographs",
 } as const;
@@ -234,8 +237,9 @@ export type Arrangement = {
 export const music = {
   label: "Music",
   title: "Arrangements and compositions.",
-  empty: "Music YouTube channel at AyDeeRisitas.",
-  // Add an arrangement by dropping a YouTube id in data/content.ts.
+  channelLead: "Music YouTube channel at",
+  channelName: "AyDeeRisitas",
+  channelHref: "https://www.youtube.com/@aydeerisitas",
 } as const;
 
 // Add an arrangement by dropping a YouTube id in this list.

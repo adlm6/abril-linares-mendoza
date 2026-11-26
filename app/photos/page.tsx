@@ -22,6 +22,17 @@ export default function PhotosPage() {
         <p className="mt-6 max-w-[62ch] text-[17px] leading-[1.5] text-pretty text-ink">
           {photographs.body}
         </p>
+        <p className="mt-[1.5em] max-w-[62ch] text-[17px] leading-[1.5] text-ink">
+          {photographs.instagramLead}{" "}
+          <a
+            className="link"
+            href={photographs.instagramHref}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {photographs.instagramHandle}
+          </a>
+        </p>
       </div>
       <Suspense
         fallback={

@@ -69,7 +69,7 @@ export function Gallery() {
               No photographs tagged {active ?? raw} yet.
             </p>
           ) : (
-            <PhotoMasonry photos={filtered} captions="hover" />
+            <PhotoMasonry photos={filtered} captions="hover" zoom />
           )}
         </motion.div>
       </AnimatePresence>

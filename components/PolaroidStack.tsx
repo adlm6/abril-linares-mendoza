@@ -2,9 +2,9 @@ import Image from "next/image";
 import type { ExperiencePhoto } from "@/data/content";
 
 const slots = [
-  { rotate: -11, x: -52, y: -36, z: 1 },
-  { rotate: 9, x: 48, y: -24, z: 2 },
-  { rotate: -3, x: -6, y: 42, z: 3 },
+  { rotate: -7, x: -86, y: -78, z: 1 },
+  { rotate: 6, x: 86, y: -64, z: 2 },
+  { rotate: -2, x: 4, y: 92, z: 3 },
 ];
 
 type PolaroidStackProps = {
@@ -17,13 +17,13 @@ export function PolaroidStack({ photos }: PolaroidStackProps) {
   }
 
   return (
-    <div className="relative mx-auto h-[280px] w-full max-w-[260px] md:mx-0 md:h-[340px] md:max-w-none">
+    <div className="relative mx-auto h-[360px] w-full max-w-[320px] md:mx-0 md:h-[440px] md:max-w-none">
       {photos.map((photo, index) => {
         const slot = slots[index % slots.length] ?? slots[0];
         return (
           <figure
             key={photo.src}
-            className="absolute left-1/2 top-1/2 w-[58%] bg-white p-2 pb-7 shadow-[0_16px_32px_rgba(28,25,23,0.16)]"
+            className="absolute left-1/2 top-1/2 w-[46%] bg-white p-1.5 pb-5 shadow-[0_12px_24px_rgba(28,25,23,0.14)]"
             style={{
               zIndex: slot.z,
               transform: `translate(-50%, -50%) translate(${slot.x}px, ${slot.y}px) rotate(${slot.rotate}deg)`,
@@ -35,7 +35,7 @@ export function PolaroidStack({ photos }: PolaroidStackProps) {
                 alt={photo.alt}
                 fill
                 sizes="180px"
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </figure>

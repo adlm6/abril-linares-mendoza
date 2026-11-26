@@ -51,7 +51,7 @@ export function Work({ variant = "home" }: WorkProps) {
   const shell =
     variant === "page"
       ? "bg-paper px-4 pb-[72px] pt-32 md:px-6 md:pb-[120px] md:pt-36"
-      : "bg-paper px-4 py-[72px] md:px-6 md:py-[120px]";
+      : "bg-paper px-4 pb-[72px] pt-8 md:px-6 md:pb-[120px] md:pt-10";
 
   return (
     <section className={shell}>
