@@ -119,7 +119,7 @@ export const experience = {
     },
     {
       org: "Student Technology Collaborative",
-      role: "Lead Coordinator and Technician",
+      role: "Lead Coordinator and Hardware/Software Technician",
       when: "October 2025 to present | Yale University",
       body: "Supervise a queue of 6+ technicians and a free repair pipeline for a campus of 10,000+ students. One-to-one diagnosis on hardware and software, aimed at queue time and resolution rate.",
     },
@@ -166,7 +166,7 @@ export const about = {
   headline: "Abril is April in Spanish.",
   moreLabel: "More about me",
   paragraphs: [
-    "Hello! Hola! 你好! I'm Abril, a Yale student in computer science and economics, graduating in 2028. I' passionate about product management, artificial intelligence, and building technology that creates meaningful impact.",
+    "Hello! Hola! 你好! I'm Abril, a Yale student in computer science and economics, graduating in 2028. I'm passionate about product management, artificial intelligence, and building technology that creates meaningful impact.",
     "My coursework runs from systems and human-computer interaction to econometrics, plus product management in the age of AI. I studied intensive Mandarin and international economics at Donghua University in Shanghai.",
     "As an Enterprise Systems Intern with the Pittsburgh Pirates, I built custom business applications using Codex and the MLB API while helping lead the organization's AI adoption through workflow automation and ROI analysis of emerging technologies. Previously, I've conducted biomedical informatics research at the UPMC Hillman Cancer Center, where I analyzed gene expression data to study racial disparities in triple-negative breast cancer and presented my findings at the American Medical Informatics Association Annual Symposium.",
     "Beyond my technical work, I am deeply committed to leadership and expanding access to technology. I serve as President of Women and Gender Minorities in Computer Science at Yale, where I lead initiatives that connect students with technical, professional, and community-building opportunities. As Orchestra Manager for a Yale Orchestra, I combined my passion for music with organizational leadership, and as a mentor with Curious Cardinals, I guide students in creating projects that blend technology, music, and entrepreneurship, encouraging my mentees to think creatively while developing technical skills.",
@@ -201,10 +201,6 @@ export const contact = {
       href: "https://github.com/adlm6",
     },
   ],
-  instagram: {
-    label: "Instagram",
-    href: "https://www.instagram.com/abrilita_photos/",
-  },
 } as const;
 
 export type Arrangement = {
@@ -216,10 +212,17 @@ export type Arrangement = {
 
 export const music = {
   label: "Music",
-  title: "Arrangements",
-  empty: "Add an arrangement by dropping a YouTube id in data/content.ts.",
+  title: "Arrangements and compositions.",
+  empty: "Music YouTube channel at AyDeeRisitas.",
+  // Add an arrangement by dropping a YouTube id in data/content.ts.
 } as const;
 
 // Add an arrangement by dropping a YouTube id in this list.
 // { title: "Arrangement title", youtubeId: "yourYouTubeId", note: "Optional note." },
-export const arrangements: readonly Arrangement[] = [];
+export const arrangements: readonly Arrangement[] = [
+  {
+    title: "Dancing In The Flames by The Weeknd",
+    youtubeId: "jOc9py77s2Y",
+    note: "Arrangement for two pianos.",
+  },
+];
