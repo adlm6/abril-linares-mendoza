@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { PhotoMasonry } from "@/components/PhotoMasonry";
 import { photos, type Photo } from "@/data/photos";
 
-const previewCount = 3;
+const previewCount = 1;
 
 function shuffle(source: readonly Photo[]) {
   const copy = [...source];

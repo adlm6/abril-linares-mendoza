@@ -7,7 +7,7 @@ export const site = {
 export const hero = {
   eyebrow: "Yale University · Computer Science and Economics · 2028",
   name: "Abril Linares Mendoza",
-  line: "Engineer, economist, game designer, photographer, and musician at Yale.",
+  line: "Engineer, economist, game designer, photographer, and musician.",
   support:
     "A third-year Yale student with 2+ years of internship experience. I'm passionate about combining art and computer science, and I love exploring the economics of it all!",
   workLabel: "Selected work",
@@ -42,28 +42,14 @@ export type Project = {
 export const work = {
   label: "Selected work",
   title:
-    "Two products about access, and the kind of internal tool I built for a baseball club.",
+    "Stuff I've built recently.",
   moreLabel: "See more work",
   projects: [
     {
-      title: "Mariachi Juvenil",
-      kicker: "Anthropic Claude Builder Hackathon, winner",
-      stack: "JavaScript, React, Gemini API, Claude Code",
-      body: "Youth music programs are hard to find and harder to afford. This React platform connects students with lower-cost instruction, built with Gemini and Claude.",
-      links: [],
-    },
-    {
-      title: "meetHaven",
-      kicker: "Campus discovery",
-      stack: "React, Node.js, Figma",
-      body: "A campus app for finding events and student organizations. Prototyped in Figma against Nielsen's heuristics, then built so the right room is not a scavenger hunt.",
-      links: [],
-    },
-    {
-      title: "Payroll demo",
+      title: "Payroll App for a MLB Team",
       kicker: "Pittsburgh Pirates",
-      stack: "TypeScript",
-      body: "A public demo of the internal tooling from the enterprise systems internship.",
+      stack: "TypeScript, CSS, JavaScript, MLB API, OpenAI Codex",
+      body: "Built during my internship for the Pittsburgh Pirates. Pulls player and game data from the MLB API. Main functions are payroll operations and commissions. Note: this is a demo version of the application to protect the privacy of the original app (which is why neither the roster or the game data is being pulled from the MLB API). AI was used to make the sample version and to take away all branding.",
       links: [
         {
           label: "Repository",
@@ -74,6 +60,41 @@ export const work = {
           href: "https://adlm6.github.io/demo-payroll-app/",
         },
       ],
+    },
+    {
+      title: "Differential Gene Expression Analysis on Tumors of Black and White Women with TNBC",
+      kicker: "UPMC Hillman Cancer Center Research",
+      stack: "R, Biomedical Informatics",
+      body: "Presented at the American Medical Informatics Association. Analyzed gene expression data to study racial disparities in triple-negative breast cancer. Used R to run differential gene expression and survival analysis across patient cohorts.",
+      links: [
+        {
+          label: "Abstract",
+          href: "https://docs.google.com/document/d/1IyD9e0IjyhxpFcOU6yv3rokB9ohwi5FLPee9eHgN9ec/edit?usp=sharing",
+        },
+      ],
+    },
+    {
+      title: "meetHaven",
+      kicker: "Campus discovery",
+      stack: "React, Node.js, Figma",
+      body: "A site to connect the New Haven student communities through shared interests by making it easy to discover events and make plans. Used Nelson's Heuristics to guide the UI/UX design process.",
+      links: [
+        {
+          label: "Repository",
+          href: "https://github.com/abrillm456/hci26-aaa",
+        },
+        {
+          label: "Poster",
+          href: "https://drive.google.com/file/d/18OFh4BGt-fst0KfCPFp1PdoGHnXMAkWJ/view?usp=sharing",
+        }
+      ],
+    },
+    {
+      title: "Mariachi Juvenil",
+      kicker: "Anthropic Claude Builder Hackathon, winner",
+      stack: "JavaScript, React, Gemini API, Claude Code",
+      body: "Youth music programs are hard to find and harder to afford. This React platform connects students with lower-cost instruction, built with Gemini and Claude.",
+      links: [],
     },
   ] satisfies readonly Project[],
 } as const;
@@ -87,37 +108,37 @@ export type Role = {
 
 export const experience = {
   label: "Experience",
-  title: "Find the bottleneck, measure it, ship the tool.",
+  title: "Past Roles",
   moreLabel: "See all experience",
   roles: [
     {
       org: "Pittsburgh Pirates",
       role: "Enterprise Systems Intern",
-      when: "May 2026 to August 2026, Pittsburgh",
+      when: "May 2026 to August 2026 | Pittsburgh, PA",
       body: "Built internal tools with OpenAI Codex and the MLB API to cut cross-department admin. With Business Intelligence, modeled the return on AI workflow automation so leadership could decide where to spend.",
     },
     {
       org: "Student Technology Collaborative",
       role: "Lead Coordinator and Technician",
-      when: "October 2025 to present, Yale University",
+      when: "October 2025 to present | Yale University",
       body: "Supervise a queue of 6+ technicians and a free repair pipeline for a campus of 10,000+ students. One-to-one diagnosis on hardware and software, aimed at queue time and resolution rate.",
     },
     {
       org: "Curious Cardinals",
       role: "Product Management Mentor",
-      when: "July 2026 to present, remote",
+      when: "July 2026 to present | remote",
       body: "Guide student founders from product strategy to a working MVP, using Claude, OpenAI, and fast prototyping.",
     },
     {
       org: "Women and Gender Minorities in CS",
       role: "President",
-      when: "September 2024 to present, New Haven",
+      when: "September 2024 to present | New Haven, CT",
       body: "Direct a 15-person executive team for 200+ members. Weekly notes to 700+ subscribers, plus programs that widen who gets into technical rooms.",
     },
     {
       org: "UPMC Hillman Cancer Center",
       role: "Biomedical Informatics Researcher",
-      when: "May 2023 to November 2023, University of Pittsburgh",
+      when: "May 2023 to November 2023 | University of Pittsburgh",
       body: "Ran differential gene expression and survival analysis in R across patient cohorts. Presented the methods at the American Medical Informatics Association Symposium.",
     },
   ] satisfies readonly Role[],
@@ -142,12 +163,15 @@ export const resume = {
 
 export const about = {
   label: "About",
-  headline: "Two majors, three languages, and a habit of making the thing.",
+  headline: "Abril is April in Spanish.",
   moreLabel: "More about me",
   paragraphs: [
-    "I'm Abril, a Yale student in computer science and economics, graduating in 2028. The coursework runs from systems and human-computer interaction to econometrics, plus product management in the age of AI. I studied intensive Mandarin and business at Donghua University in Shanghai.",
-    "I speak Spanish and English fluently, and Mandarin at an intermediate level. I'm a Yale Ogilvie Technology Scholar and a National Aspirations in Computing awardee.",
-    "The photographs on this site are mine.",
+    "Hello! Hola! 你好! I'm Abril, a Yale student in computer science and economics, graduating in 2028. I' passionate about product management, artificial intelligence, and building technology that creates meaningful impact.",
+    "My coursework runs from systems and human-computer interaction to econometrics, plus product management in the age of AI. I studied intensive Mandarin and international economics at Donghua University in Shanghai.",
+    "As an Enterprise Systems Intern with the Pittsburgh Pirates, I built custom business applications using Codex and the MLB API while helping lead the organization's AI adoption through workflow automation and ROI analysis of emerging technologies. Previously, I've conducted biomedical informatics research at the UPMC Hillman Cancer Center, where I analyzed gene expression data to study racial disparities in triple-negative breast cancer and presented my findings at the American Medical Informatics Association Annual Symposium.",
+    "Beyond my technical work, I am deeply committed to leadership and expanding access to technology. I serve as President of Women and Gender Minorities in Computer Science at Yale, where I lead initiatives that connect students with technical, professional, and community-building opportunities. As Orchestra Manager for a Yale Orchestra, I combined my passion for music with organizational leadership, and as a mentor with Curious Cardinals, I guide students in creating projects that blend technology, music, and entrepreneurship, encouraging my mentees to think creatively while developing technical skills.",
+    "Fluent in English and Spanish and proficient in Mandarin Chinese, I enjoy collaborating across disciplines and cultures. I'm a Yale Ogilvie Technology Scholar and a National Aspirations in Computing awardee.",
+    "Outside of class and work, I play, compose, and arrange music. I also capture and edit photography. All photos on this site are mine!",
   ],
   skills:
     "Python, C, Java, C#, JavaScript, React, Node.js, R, HTML/CSS. Git, REST APIs, UNIX, Unity, Figma.",
@@ -156,16 +180,16 @@ export const about = {
 
 export const photographs = {
   label: "Photographs",
-  title: "A room for the pictures.",
-  body: "Filter by what you came to see.",
-  homeBody: "A few from the set, chosen again each visit.",
+  title: "It all started with a gifted camera...",
+  body: "Digital shots from campus and travel. Graduating from Yale, Harvard, JHU, Pitt, or CMU this Spring? Contact me for 2027. If you're a Yale club seeking a photo shoot, use the Yale filter to see past club photos and reach out if you're interested! See more photos on Instagram @abrilita_photos",
+  homeBody: "A photo I've taken recently, chosen again each visit.",
   moreLabel: "See all photographs",
 } as const;
 
 export const contact = {
   headline: "Say hello.",
   email: "adlinares6@gmail.com",
-  location: "Pittsburgh and New Haven",
+  location: "Pittsburgh, PA and New Haven, CT",
   backdrop: "/photos/red-lanterns.jpg",
   links: [
     {
