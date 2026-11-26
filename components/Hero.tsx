@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/Reveal";
-import { hero } from "@/data/content";
+import { experience, hero } from "@/data/content";
 import { photos, type Photo } from "@/data/photos";
 
 const easeOut: [number, number, number, number] = [0, 0, 0.2, 1];
@@ -102,8 +102,8 @@ export function Hero() {
           <p className="mt-5 text-[1.2rem] leading-snug">{hero.line}</p>
           <p className="mt-4 text-[17px] leading-[1.5]">{hero.support}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link className="btn btn-ink" href="/work">
-              {hero.workLabel}
+            <Link className="btn btn-ink" href="/experience">
+              {experience.label}
             </Link>
             <Link className="btn btn-line" href="/photos">
               {hero.photosLabel}

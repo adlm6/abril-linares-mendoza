@@ -7,34 +7,40 @@ type WorkProps = {
   variant?: "home" | "page";
 };
 
+function projectImage(project: Project | (typeof work.projects)[number]) {
+  if ("image" in project && typeof project.image === "string" && project.image.length > 0) {
+    return project.image;
+  }
+  return undefined;
+}
+
+function projectImagePosition(project: Project | (typeof work.projects)[number]) {
+  if ("imagePosition" in project && typeof project.imagePosition === "string") {
+    return project.imagePosition;
+  }
+  return "center";
+}
+
 function ProjectMedia({
   project,
   wide,
+  image,
 }: {
-  project: Project;
+  project: Project | (typeof work.projects)[number];
   wide: boolean;
+  image: string;
 }) {
-  if (!project.image) {
-    return (
-      <div className="glass flex h-[420px] items-end px-8 py-8">
-        <p className="display text-balance text-[2rem] leading-tight text-ink">
-          {project.kicker}
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div className="relative h-[420px] overflow-hidden rounded-[28px] bg-[#e6e1d9]">
       <Image
-        src={project.image}
+        src={image}
         alt={project.title}
         fill
         sizes={
           wide ? "(min-width: 768px) 1120px, 100vw" : "(min-width: 768px) 540px, 100vw"
         }
         className="object-cover"
-        style={{ objectPosition: project.imagePosition ?? "center" }}
+        style={{ objectPosition: projectImagePosition(project) }}
       />
     </div>
   );
@@ -58,10 +64,11 @@ export function Work({ variant = "home" }: WorkProps) {
         <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-16 md:mt-[72px] md:grid-cols-2 md:gap-y-[72px]">
           {projects.map((project, index) => {
             const span = projects.length % 2 === 1 && index === projects.length - 1;
+            const image = projectImage(project);
             return (
               <article key={project.title} className={span ? "md:col-span-2" : undefined}>
-                <ProjectMedia project={project} wide={span} />
-                <div className="mt-4 max-w-2xl">
+                {image ? <ProjectMedia project={project} wide={span} image={image} /> : null}
+                <div className={image ? "mt-4 max-w-2xl" : "max-w-2xl"}>
                   <p className="eyebrow">{project.kicker}</p>
                   <h3 className="display mt-3 text-[2rem] leading-tight text-ink">
                     {project.title}

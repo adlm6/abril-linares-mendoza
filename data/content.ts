@@ -10,15 +10,15 @@ export const hero = {
   line: "Engineer, economist, game designer, photographer, and musician.",
   support:
     "A third-year Yale student with 2+ years of internship experience. I'm passionate about combining art and computer science, and I love exploring the economics of it all!",
-  workLabel: "Selected work",
   photosLabel: "Photographs",
 } as const;
 
 export const navigation = [
-  { href: "/work", label: "Work" },
   { href: "/experience", label: "Experience" },
+  { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/photos", label: "Photos" },
+  { href: "/music", label: "Music" },
   { href: "/#contact", label: "Contact" },
 ] as const;
 
@@ -32,7 +32,7 @@ export type Project = {
   kicker: string;
   stack: string;
   body: string;
-  /** Optional file under public/projects/. Omit it to show a type-only placeholder. */
+  /** Optional file under public/projects/. Omit it and the project has no media area. */
   image?: string;
   /** CSS object-position for `image`, when one is set. */
   imagePosition?: string;
@@ -201,4 +201,25 @@ export const contact = {
       href: "https://github.com/adlm6",
     },
   ],
+  instagram: {
+    label: "Instagram",
+    href: "https://www.instagram.com/abrilita_photos/",
+  },
 } as const;
+
+export type Arrangement = {
+  title: string;
+  /** The id in a YouTube watch URL, after v=. */
+  youtubeId: string;
+  note?: string;
+};
+
+export const music = {
+  label: "Music",
+  title: "Arrangements",
+  empty: "Add an arrangement by dropping a YouTube id in data/content.ts.",
+} as const;
+
+// Add an arrangement by dropping a YouTube id in this list.
+// { title: "Arrangement title", youtubeId: "yourYouTubeId", note: "Optional note." },
+export const arrangements: readonly Arrangement[] = [];

@@ -24,6 +24,16 @@ export function Contact() {
           ))}
           <li>{contact.location}</li>
         </ul>
+        <p className="mt-3 text-[17px] leading-[1.5]">
+          <a
+            className="link"
+            href={contact.instagram.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {contact.instagram.label}
+          </a>
+        </p>
       </Reveal>
     </PhotoBand>
   );

@@ -12,10 +12,10 @@ These rules apply to every change in this repository. The design source of truth
 
 ## Structure
 
-- Routes: `/` for the home page, `/work`, `/experience`, `/about`, and `/photos`. Contact stays on the home page. The nav Contact link is `/#contact`.
+- Routes: `/` for the home page, `/experience`, `/work`, `/about`, `/photos`, and `/music`. Contact stays on the home page. The nav Contact link is `/#contact`. Nav order is Experience, then Work.
 - Content lives in typed modules under `data/`, not in JSX
 - Photographs are objects in `data/photos.ts` with `src`, `title`, `alt`, `tags`, `hero`, and `heroPosition`. `hero: false` keeps a portrait of an individual person out of the landing photo. `heroPosition` is the CSS object-position when that photo is the hero. Adding a photo is one new object plus a file in `public/photos/`
-- Experience, projects, and contact live in `data/content.ts`. A project image is an optional file under `public/projects/`. Experience prints for the polaroid stack are `experiencePhotos`, files under `public/experience/`
+- Experience, projects, contact, and music live in `data/content.ts`. A project image is an optional file under `public/projects/`. With no image, the project has no media area. Experience prints for the polaroid stack are `experiencePhotos`, files under `public/experience/`. Arrangements are `arrangements`, each with a YouTube id.
 - One component per file under `components/`
 - The A logo is an inline SVG component, not an image
 

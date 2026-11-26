@@ -8,14 +8,15 @@ Coding rules for the build live in [cursorrules.md](/cursor/stores/bc-146e5fc6-7
 
 ## Sections
 
-Home page with a first look at each section, plus its own page for Work, Experience, About, and Photographs. Sticky glass nav: the A mark, then Work, Experience, About, Photos, Contact. Those links go to `/work`, `/experience`, `/about`, and `/photos`. Contact stays only on the home page, and the nav link is `/#contact`.
+Home page with a first look at each section, plus its own page for Experience, Work, About, Photographs, and Music. There is no music block on the home page. Sticky glass nav: the A mark, then Experience, Work, About, Photos, Music, Contact. Experience sits immediately left of Work. Those links go to `/experience`, `/work`, `/about`, `/photos`, and `/music`. Contact stays only on the home page, and the nav link is `/#contact`. Nav pills have a real gap. The current page is one pill. Hover is a separate state and does not cover that pill.
 
-1. **Hero.** Full-viewport photograph, chosen at random on each visit from gallery photos with `hero: true`. Portraits of an individual person set `hero: false` and never appear here. The headshot is not in that set. `heroPosition` is the CSS object-position for that photo, so a subject such as the bear can sit to the right of the name card. Do not scale the photo up past its pixels. Glass panel with name, one line, and two actions.
-2. **Selected work.** Large rounded cards. A project image is an optional file under `public/projects/`. When it is missing, the card is a type-only glass placeholder, not a gallery photograph. Each card has a repo or demo link when one exists. Home shows the first project and a link to `/work`.
-3. **Experience.** Home shows the first two roles and a link to `/experience`. That page is a vertical timeline: line, dot, date, role, organization in the accent color, and one short line. A polaroid stack of `experiencePhotos` sits beside it when she adds prints. The page ends with "See full resume".
+1. **Hero.** Full-viewport photograph, chosen at random on each visit from gallery photos with `hero: true`. Portraits of an individual person set `hero: false` and never appear here. The headshot is not in that set. `heroPosition` is the CSS object-position for that photo, so a subject such as the bear can sit to the right of the name card. Do not scale the photo up past its pixels. Glass panel with name, one line, and two actions. The primary action is Experience. Photographs is the second.
+2. **Experience.** On the home page this block comes before selected work. Home shows the first two roles and a link to `/experience`. That page is a vertical timeline: line, dot, date, role, organization in the accent color, and one short line. A polaroid stack of `experiencePhotos` sits beside it when she adds prints. The page ends with "See full resume".
+3. **Selected work.** Comes after experience on the home page. A project image is an optional file under `public/projects/`. When it is missing, there is no media area, just the type. Each card has a repo or demo link when one exists. Home shows the first project and a link to `/work`.
 4. **About.** Short bio, headshot, languages, honors, and a quiet skills line. Not a logo wall. Home shows the opening paragraph. The full page is `/about`. The headshot is served at its original pixel size.
 5. **Photographs.** Home shows a few photos, a different handful each visit, then a button to `/photos`. Chips on that page are real buttons and filter the grid. Captions appear only on hover, at the bottom of the image, over a light vignette. The same photos can sit behind other sections.
-6. **Contact.** Email, LinkedIn, GitHub, on the home page only. Phone stays off the public page unless Abril asks for it.
+6. **Music.** Its own page at `/music`, linked in the nav, not shown on the home page. YouTube embeds come from `arrangements` in `data/content.ts`. With no ids, the page says to add one there.
+7. **Contact.** Email, LinkedIn, GitHub, then Instagram on its own line, on the home page only. Phone stays off the public page unless Abril asks for it.
 
 ## Copy
 
@@ -31,7 +32,7 @@ Line: Engineer, economist, game designer, photographer, and musician at Yale.
 
 Support: A third-year Yale student with 2+ years of internship experience. I'm passionate about combining art and computer science, and I love exploring the economics of it all!
 
-Actions: Selected work, Photographs
+Actions: Experience, Photographs
 
 ### Selected work
 

@@ -93,15 +93,15 @@ export function Nav() {
           >
             <Logo />
           </Link>
-          <ul className="hidden items-center md:flex">
+          <ul className="hidden items-center gap-2 md:flex">
             {navigation.map((item) => {
               const active = linkPath(item.href) !== "/" && linkPath(item.href) === path;
               return (
-                <li key={item.href}>
+                <li key={item.href} className="shrink-0">
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`rounded-full px-3 py-2 text-[15px] text-ink hover:bg-white/50 ${active ? "bg-white/70" : ""}`}
+                    className={`block rounded-full px-3 py-2 text-[15px] whitespace-nowrap text-ink ${active ? "bg-white/70" : "hover:bg-white/50"}`}
                     onClick={(event) => {
                       setOpen(false);
                       scrollToHash(event, item.href, path);
@@ -125,7 +125,7 @@ export function Nav() {
           </button>
         </div>
         <div id="site-menu" hidden={!open} className="glass mt-2 p-2 md:hidden">
-          <ul className="flex flex-col">
+          <ul className="flex flex-col gap-1">
             {navigation.map((item) => {
               const active = linkPath(item.href) !== "/" && linkPath(item.href) === path;
               return (
@@ -133,7 +133,7 @@ export function Nav() {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className="block rounded-2xl px-4 py-3 text-[17px] text-ink hover:bg-white/50"
+                    className={`block rounded-2xl px-4 py-3 text-[17px] text-ink ${active ? "bg-white/70" : "hover:bg-white/50"}`}
                     onClick={(event) => {
                       setOpen(false);
                       scrollToHash(event, item.href, path);

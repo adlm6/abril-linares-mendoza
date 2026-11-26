@@ -9,8 +9,8 @@ export default function HomePage() {
   return (
     <main id="content">
       <Hero />
-      <Work />
       <Experience />
+      <Work />
       <About />
       <Photographs />
       <Contact />
