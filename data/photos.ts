@@ -105,7 +105,7 @@ export const photos: readonly Photo[] = [
     width: 2000,
     height: 1333,
     hero: true,
-    heroPosition: "100% center",
+    heroPosition: "center",
   },
   {
     src: "/photos/thermal-terraces.jpg",

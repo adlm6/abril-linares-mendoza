@@ -78,6 +78,8 @@ export const work = {
       kicker: "Campus discovery",
       stack: "React, Node.js, Figma",
       body: "A site to connect the New Haven student communities through shared interests by making it easy to discover events and make plans. Used Nelson's Heuristics to guide the UI/UX design process.",
+      // image: "/projects/meetHavenLogo.png",
+      // imagePosition: "center",
       links: [
         {
           label: "Repository",
@@ -154,7 +156,26 @@ export type ExperiencePhoto = {
 // Prints for the polaroid stack beside the experience timeline.
 // Add a file under public/experience/ and a row here.
 // { src: "/experience/example.jpg", alt: "Short description of the photo.", width: 1600, height: 1600 },
-export const experiencePhotos: readonly ExperiencePhoto[] = [];
+export const experiencePhotos: readonly ExperiencePhoto[] = [
+  {
+    src: "/experience/piratesLogo.jpg",
+    alt: "Pirates logo.",
+    width: 1600,
+    height: 1600,
+  },
+  {
+    src: "/experience/stcLogo.png",
+    alt: "STC logo.",
+    width: 1600,
+    height: 1600,
+  },
+  {
+    src: "/experience/wgicsLogo.jpg",
+    alt: "WGiCS logo.",
+    width: 1600,
+    height: 1600,
+  }
+];
 
 export const resume = {
   label: "See full resume",
@@ -224,5 +245,10 @@ export const arrangements: readonly Arrangement[] = [
     title: "Dancing In The Flames by The Weeknd",
     youtubeId: "jOc9py77s2Y",
     note: "Arrangement for two pianos.",
+  },
+  {
+    title: "Space Song by Beach House",
+    youtubeId: "zp7QY0WvAkg",
+    note: "Piano arrangement.",
   },
 ];
