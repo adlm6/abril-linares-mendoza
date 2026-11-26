@@ -74,7 +74,7 @@ export const photos: readonly Photo[] = [
     tags: ["Wildlife"],
     width: 2000,
     height: 1333,
-    hero: true,
+    hero: false,
     heroPosition: "center",
   },
   {
@@ -105,7 +105,7 @@ export const photos: readonly Photo[] = [
     width: 2000,
     height: 1333,
     hero: true,
-    heroPosition: "50% center",
+    heroPosition: "100% center",
   },
   {
     src: "/photos/thermal-terraces.jpg",
